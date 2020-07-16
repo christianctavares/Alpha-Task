@@ -1,0 +1,38 @@
+body{
+    background-color: #303030;
+}
+
+/* ============NAVBAR============== */
+
+#barraNav{
+    background-color: #212121;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+
+/* ============NAVBAR============== */
+
+#conteudoMenu{
+    margin-top: 10%;
+    background-color: #424242;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    color: #FFFFFF;
+}
+
+
+
+
+#footerMaior{
+    background-color: #212121;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    color: #FFFFFF;
+}
+#footerMenor{
+    background-color: #000000;
+    font-family: 'Quicksand' sans-serif;
+    font-size: 80%; 
+    color: #000000;
+    height: 30px
+}
+

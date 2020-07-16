@@ -1,0 +1,20 @@
+.bodyLogin {
+    align-items: center;
+    margin-top: 4%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #424242;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    padding-left: 20%;
+    padding-right: 20%;
+  
+}
+
+@media (max-width: 768px) {
+
+    .bodyLogin {
+        
+        margin-bottom: 30%;
+
+    }
+  }

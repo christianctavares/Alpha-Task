@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cadastro</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/cadastro.css" />
+<link rel="stylesheet" href="css/parceiros.css" />
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark" id="barraNav">
+		<a class="navbar-brand" href="#">Alpha Planning</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="index.html">Home</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div style="margin-bottom: 15%; padding-left: 2%; padding-right: 2%;">
+
+		<div class="bodyLogin">
+			<h1 style="color: #FFFFFF; text-align: center; padding-bottom: 3%;">Cadastro</h1>
+			<form class="login">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label style="color: #FFFFFF; text-align: center;">Nome</label> <input
+							type="text" class="form-control" id="name" placeholder="Nome"
+							name="nomem" onchange="validateName()" required="required">
+						<label id="erroNome"></label>
+					</div>
+					<div class="form-group col-md-6">
+						<label style="color: #FFFFFF; text-align: center;">Email</label>
+						<input type="email" class="form-control" id="email"
+							placeholder="Email" name="emailm" onchange="validateEmail()"
+							required="required"> <label id="erroEmail"></label>
+					</div>
+					<div class="form-group col-md-12">
+						<label style="color: #FFFFFF; text-align: center;">Senha</label>
+						<input type="password" class="form-control" id="senha"
+							placeholder="Senha" name="senham" onchange="validateSenha()"
+							required="required"> <label id="erroSenha"></label>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label style="color: #FFFFFF; text-align: center;">Cpf</label> <input
+							type="text" class="form-control" id="cpf" placeholder="Cpf"
+							name="cpfm" onchange="validateCpf()" required="required">
+						<label id="erroCpf"></label>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label style="color: #FFFFFF; text-align: center;">Profissao</label>
+						<input type="text" class="form-control" id="profissao"
+							placeholder="Profissao" name="profissaom"
+							onchange="validateProfissao()" required="required"> <label
+							id="erroProfissao"></label>
+					</div>
+					<div class="form-group col-md-6">
+						<label style="color: #FFFFFF; text-align: center;">Data
+							de Nascimento</label> <input type="date" class="form-control" id="data"
+							placeholder="Data Nascimento" name="dataNascimentom"
+							required="required"> <label id="erroData"></label>
+					</div>
+
+				</div>
+
+				<div style="text-align: center;">
+					<input
+						style="margin-left: auto; margin-right: auto; width: 50%; background-color: #e45c34; color: #FFFFFF; border: none;"
+						class="btn btn-lg btn-primary btn-block" type="submit"
+						value="Cadastrar Usuario" id="iCadastrar"
+						formaction="ServletCadastroUsuario" formmethod="post" />
+				</div>
+			</form>
+
+			<script>
+
+          function validateName() {
+              var name = document.getElementById("name").value;
+              if (name == "" || name == null || name.length == 0) {
+                document.getElementById("erroNome").innerHTML =
+                  "Nome não pode estar em branco";
+                document.getElementById("erroNome").style.color = "red";
+                return false;
+              }else if(name.includes("1") ||name.includes("2") ||name.includes("3") ||
+              		name.includes("4") ||name.includes("5") ||name.includes("6") ||
+              		name.includes("7") ||name.includes("8") ||name.includes("9") ||
+              		name.includes("0")){
+             	 document.getElementById("erroNome").innerHTML =
+                  "Nome não pode conter numero";
+             	document.getElementById("erroNome").style.color = "red";
+  			  return false;
+              }else if(name.length < 3){
+               document.getElementById("erroNome").innerHTML =
+                      "Nome invalido";  
+               document.getElementById("erroNome").style.color = "red";
+              }else{
+                  document.getElementById("erroNome").innerHTML =
+                      ""; 
+                  return true
+               }
+            }
+
+            function validateEmail() {
+              var email = document.getElementById("email").value;
+              if (email == "") {
+                document.getElementById("erroEmail").innerHTML =
+                  "Email não pode estar em branco";
+                document.getElementById("erroEmail").style.color = "red";
+                return false;
+              } else {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (!re.test(email)) {
+                  document.getElementById("erroEmail").innerHTML =
+                    "Formato de Email Invalido";
+                  document.getElementById("erroEmail").style.color = "red";  
+                  return false;
+                }else{
+                  document.getElementById("erroEmail").innerHTML =
+                      ""; 
+                  return true
+                }
+            }
+            }
+
+            function validateSenha(){
+              var subject = document.getElementById("senha").value;
+              if (subject == "") {
+                document.getElementById("erroSenha").innerHTML =
+                  "Senha não pode estar em branco";
+                  document.getElementById("erroSenha").style.color = "red";  
+                return false;
+              }else{
+                document.getElementById("erroSenha").innerHTML =
+                      ""; 
+                  return true
+              }
+            }
+
+            function validateCpf(){
+              var subject = document.getElementById("cpf").value;
+              if (subject == "") {
+                document.getElementById("erroCpf").innerHTML =
+                  "Cpf não pode estar em branco";
+                  document.getElementById("erroCpf").style.color = "red";  
+                return false;
+                }else if(subject.length != 11){
+                	 document.getElementById("erroCpf").innerHTML =
+                         "Cpf Invalido";
+                         document.getElementById("erroCpf").style.color = "red";  
+              }else{
+                  var cpf = document.getElementById("cpf").value;
+            	  cpf = cpf.replace(/[^\d]/g, "");
+            	  document.getElementById("cpf").value = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+                  document.getElementById("erroCpf").innerHTML = ""; 
+                  return true
+              }
+            }
+            
+            function validateProfissao(){
+                var subject = document.getElementById("profissao").value;
+                if (subject == "") {
+                  document.getElementById("erroProfissao").innerHTML =
+                    "Profissao não pode estar em branco";
+                    document.getElementById("erroProfissao").style.color = "red";  
+                  return false;
+                }else{
+                  document.getElementById("erroProfissao").innerHTML =
+                        ""; 
+                    return true
+                }
+              }
+            
+            function validateData(){
+                var subject = document.getElementById("data").value;
+                if (subject == "") {
+                  document.getElementById("erroData").innerHTML =
+                    "Data não pode estar em branco";
+                    document.getElementById("erroData").style.color = "red";  
+                  return false;
+                }else{
+                  document.getElementById("erroData").innerHTML =
+                        ""; 
+                    return true
+                }
+              }
+          
+          </script>
+
+		</div>
+
+	</div>
+
+	<footer class="page-footer fixed-bottom font-small darken-3">
+		<nav class="navbar navbar-light" id="footerMaior">
+			<a class="navbar-brand" style="color: #ffffff; opacity: 70%;"
+				href="https://alphaHospital.com/"> AlphaPlanning.com</a> <a>
+				Copyright 2020-2022. All rights reserved.</a>
+		</nav>
+		<nav class="navbar navbar-dark" id="footerMenor">
+			<p style="color: #ffffff; opacity: 70%;">Designed by Christian
+				Tavares</p>
+		</nav>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</body>
+</html>

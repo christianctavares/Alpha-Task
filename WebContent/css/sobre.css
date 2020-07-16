@@ -1,0 +1,79 @@
+#conteudo{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+h2 {
+    border-bottom: 2px solid rgb(56, 56, 56);
+    margin-top: 30px;
+  }
+
+  #conteudoSobre{
+    margin-bottom: 15%;   padding-left: 2%; padding-right: 2%;
+  }
+
+  h1.jogoAno {
+    text-align: center;
+    font-size: 55px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: rgb(255, 250, 250);
+  }
+  
+  figure.img1 {
+    background-color: #424242;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    text-align: center;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 3%;
+    width: 60%;
+    color: #000000;
+  }
+  
+  figure.img2 {
+    background-color: #424242;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    width: 40%;
+    color: #000000;
+  }
+  
+  figcaption {
+    font-style: italic;
+    margin-top: 10px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+  
+  p {
+    padding: 0 45px;
+    text-indent: 15px;
+  }
+  
+  #familia-pelho {
+    float: right;
+    margin: 0 0 10px 10px;
+    width: 40%;
+  }
+  
+  img.img1 {
+    width: 90%;
+  }
+  
+  img.img2 {
+    width: 60%;
+  }
+
+  @media (max-width: 700px) 
+{
+  figure.img2 {
+    display: none;
+  }
+
+  #conteudoSobre{
+    margin-bottom: 35%;   padding-left: 2%; padding-right: 2%;
+  }
+}
+  

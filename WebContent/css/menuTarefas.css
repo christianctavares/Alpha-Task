@@ -1,0 +1,107 @@
+#tabela{
+    padding-top: 8%;
+    padding-bottom: 8%;
+    background-color: #424242;
+    padding-left: 20%;
+    padding-right: 20%;
+    overflow: auto;
+
+}
+.conteudoEquipes{
+    margin-bottom: 15%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+
+.scroll{
+    background-color: #424242;
+    margin-top: 4%;
+    overflow: auto;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+#botaoAddTarefa{
+    color: #FFFFFF;
+    background-color: #e45c34;
+}
+
+#botaoAddMembro{
+    color: #FFFFFF;
+    background-color: #e45c34;
+}
+
+#grupoBotoes{
+    text-align: center;
+    padding-top: 8%;
+}
+
+#deletar{
+    color: #303030;
+
+    font-weight: bold;
+    background-color:#d62237;
+}
+
+#adicionar{
+    color: #303030;
+
+    font-weight: bold;
+    background-color:#1EA51d;
+}
+
+#editar{
+    color: #303030;
+    font-weight: bold;
+    background-color:rgb(5, 160, 199);
+}
+
+
+#detalhar{
+    color: #303030;
+    font-weight: bold;
+    background-color:#ffcd05;
+}
+
+.horizontal-scroll-except-first-column {
+    width: 100%;
+    overflow: auto;
+  }
+  
+  .overflow {
+    width: 10em;
+    margin: 0 0 2em 0;
+  
+  /**
+   * Required properties to achieve text-overflow
+   */
+    white-space: nowrap;
+    overflow: hidden;
+}
+  
+  .horizontal-scroll-except-first-column > table > * > tr > th:first-child,
+  .horizontal-scroll-except-first-column > table > * > tr > td:first-child {
+    position: absolute;
+    width: 15em;
+
+    background-color: #424242;
+
+  }
+  
+  .horizontal-scroll-except-first-column > table > * > tr > th,
+  .horizontal-scroll-except-first-column > table > * > tr > td {
+    /* Without this, if a cell wraps onto two lines, the first column
+     * will look bad, and may need padding. */
+    white-space: nowrap;
+  }
+
+
+  @media (max-width: 700px) 
+  {
+    .conteudoEquipes{
+      margin-bottom: 15%;
+      padding-left: 2%;
+      padding-right: 2%;
+  }
+  }
+    

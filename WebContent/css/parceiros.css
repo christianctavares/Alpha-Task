@@ -1,0 +1,49 @@
+@media (min-width: 768px) {
+  .carousel-multi-item-2 .col-md-3 {
+    float: left;
+    width: 25%;
+    max-width: 100%;
+  }
+
+}
+
+.bodyParceiros {
+  align-items: center;
+  margin-top: 5%;
+
+  background-color: #424242;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+
+}
+
+.carousel-multi-item-2 .card img {
+  border-radius: 2px;
+
+}
+.parceiros{
+    margin-bottom: 15%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+h1.jogoAno {
+  text-align: center;
+  font-size: 55px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: rgb(255, 250, 250);
+}
+
+@media (max-width: 700px) 
+{
+
+  #parceiros{
+    margin-bottom: 35%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  #contato{
+    margin-bottom: 35%;
+  }
+}
