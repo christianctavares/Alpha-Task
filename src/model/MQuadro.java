@@ -46,10 +46,15 @@ public class MQuadro {
 		Usuario uAux = new Usuario();
 		
 		Usuario u = uAux.localizarUsuario(idUsuarioLogado);
+		
+		Quadros qAux = new Quadros();
+		Quadros q = qAux.localizarQuadro(String.valueOf(qEscolhido.getId()));
+		
 		for (Quadros quadro : u.getListaQuadros()) {
 			if(quadro.id == qEscolhido.id) {
 				u.getListaQuadros().remove(quadro);
 				session.update(u);
+				session.update(q);
 				session.getTransaction().commit();
 				session.close();
 				
