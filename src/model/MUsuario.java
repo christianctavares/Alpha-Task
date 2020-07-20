@@ -38,17 +38,12 @@ public class MUsuario {
 			query.setParameter("senha", senha);
 			query.setMaxResults(1);
 			Usuario usuario = (Usuario) query.uniqueResult();
+			
 			if (usuario == null) {
 				return null;
 			} else {
-
-				u = session.find(Usuario.class, usuario.id);
-				if (u != null) {
-					session.close();
-					return u;
-				} else {
-					return null;
-				}
+				session.close();
+				return usuario;
 
 			}
 		} catch (HibernateException e) {

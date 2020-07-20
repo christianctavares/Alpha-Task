@@ -75,7 +75,7 @@
 					out.println("<tbody>");
 					out.print("<form>");
 					out.println("<tr>");
-					out.println("<input name=\"idTarefa\" type=\"hidden\" value=" + quadro.getId() + ">");
+					out.println("<input type=\"hidden\" name=\"idQuadro\" value= " + quadro.getId() + ">");
 					out.println("<td>" + quadro.getNome() + "</td>");
 					out.println("<td>" + quadro.getDescricao() + "</td>");
 					out.println("<td>");

@@ -11,7 +11,7 @@ public class MQuadro {
 
 	public String msg = null;
 
-	public boolean cadastrarQuadro(Quadros quadros, String idUsuarioLogado) {
+	public boolean cadastrarQuadro(Quadros quadro, String idUsuarioLogado) {
 		
 		Session session = HibernateUtil.abrirSession();
 		session.beginTransaction();
@@ -20,7 +20,7 @@ public class MQuadro {
 		
 		Usuario u = uAux.localizarUsuario(idUsuarioLogado);
 			
-		u.getListaQuadros().add(quadros);
+		u.getListaQuadros().add(quadro);
 			
 		session.update(u);
 		session.getTransaction().commit();
@@ -39,18 +39,26 @@ public class MQuadro {
 		return listaQuadros;
 	}
 
-	public boolean excluirQuadro(Quadros qEscolhido) {
+	public boolean excluirQuadro(Quadros qEscolhido, String idUsuarioLogado) {
 		Session session = HibernateUtil.abrirSession();
 		session.beginTransaction();
-		qEscolhido = session.find(Quadros.class, qEscolhido.getId());
-		session.delete(qEscolhido);
-		session.getTransaction().commit();
-		session.close();
-		if(qEscolhido != null) {
-			return true;
-		}else {
-			return false;
-		}
+		
+		Usuario uAux = new Usuario();
+		
+		Usuario u = uAux.localizarUsuario(idUsuarioLogado);
+		for (Quadros quadro : u.getListaQuadros()) {
+			if(quadro.id == qEscolhido.id) {
+				u.getListaQuadros().remove(quadro);
+				session.update(u);
+				session.getTransaction().commit();
+				session.close();
+				
+				return true;
+			}
+		}	
+
+			
+		return false;
 		
 	}
 	

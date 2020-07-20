@@ -29,21 +29,16 @@ public class ServletDirecionarExclusaoQuadro extends HttpServlet {
    		String idLogado = session.getAttribute("idUsuarioLogado").toString(); 
    		String idQuadro = request.getParameter("idQuadro");
    		session.setAttribute("idQuadro", idQuadro);
-		/*
-		 * Quadros q = new Quadros(); Quadros qAux = q.localizarQuadro(idQuadro);
-		 * 
-		 * int idCriador = qAux.getIdDoCriador(); Usuario u = new Usuario(); Usuario aux
-		 * = u.localizarUsuario(String.valueOf(idCriador));
-		 * 
-		 * request.setAttribute("nomeCriadorTarefau", aux.nome);
-		 * request.setAttribute("nomeTarefau", tAux.getNomeTarefa());
-		 * request.setAttribute("statusTarefau", tAux.getStatus());
-		 * request.setAttribute("prioridadeTarefau", tAux.getPrioridade());
-		 * request.setAttribute("estimativaTarefau", tAux.getEstimativa());
-		 * request.setAttribute("descricaoTarefau", tAux.getDescricao());
-		 * request.setAttribute("dataCriacaoTarefau", tAux.getDataCriacao());
-		 */
-   		request.getRequestDispatcher("excluirQuadro.jsp").forward(request, response);
+		
+		  Quadros q = new Quadros();
+		  Quadros qAux = q.localizarQuadro(idQuadro);
+
+
+		  request.setAttribute("nomeQuadrou", qAux.getNome());
+		  request.setAttribute("descricaoQuadrou", qAux.getDescricao());
+		  
+		 
+   		  request.getRequestDispatcher("excluirQuadro.jsp").forward(request, response);
 	}
 
 }

@@ -37,22 +37,16 @@ public class ServletLogin extends HttpServlet {
 			Usuario u = new Usuario();
 			Usuario aux = u.logar(email, senha);
 			if(aux != null) {
-				/*
-				 * Quadros q = new Quadros();
-				 * List<Quadros> listaQuadros = q.listarQuadros();
-				 */
 				
 				request.setAttribute("nomeu", aux.getNome());
 				
 				HttpSession session  = request.getSession(true);     
 	            session.setAttribute ("idUsuarioLogado", aux.getId());
 	            
-				//request.setAttribute("idu", aux.getId());
+
 	            
 				request.setAttribute("listaDeQuadros", aux.getListaQuadros());
-				//instacia a classe quadros e chama o metodo retornar lista de quadros passando o id do usuario como argumento
-				//e com essa lista seto nos atributos do request
-				//request.setAttribute("listaQuadros", q.getLista(u.getId()));
+
 
 				request.getRequestDispatcher("menuQuadros.jsp").forward(request, response);
 				

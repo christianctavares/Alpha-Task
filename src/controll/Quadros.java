@@ -45,7 +45,7 @@ public class Quadros {
 	private List<Usuario> listaUsuarios;
 	
 	@Transient
-	private String msg;
+	public String msg;
 
 	public Quadros() {
 	}
@@ -128,10 +128,10 @@ public class Quadros {
 		return null;
 	}
 	
-	public boolean excluirQuadro(Quadros qEscolhido) {
+	public boolean excluirQuadro(Quadros qEscolhido,  String idLogado) {
 		MQuadro q = new MQuadro();
 		
-		boolean quadroAux = q.excluirQuadro(qEscolhido);
+		boolean quadroAux = q.excluirQuadro(qEscolhido,idLogado);
 		if(quadroAux) {
 			return true;
 		}else {
