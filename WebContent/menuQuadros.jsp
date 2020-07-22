@@ -105,7 +105,7 @@
 						out.println("<div class=\"btn-group btn-group-toggle\" data-toggle=\"buttons\">");
 						out.println("<label class=\"btn btn-secondary active\">");
 						out.println(
-						"<input style=\"background: none; border: none;color: #FFFFFF\" type=\"submit\" value=\"Acessar\" name=\"options\" id=\"option1\" autocomplete=\"off\" formaction=\"ServletDirecionarAreaTarefas\" formmethod=\"post\" type=\"submit\"> ");
+						"<input style=\"background: none; border: none;color: #FFFFFF\" type=\"submit\" value=\"Acessar\" name=\"options\" autocomplete=\"off\" formaction=\"ServletDirecionarAreaTarefas\" formmethod=\"post\" type=\"submit\"> ");
 						out.println("</label>");
 						out.println("</div>");
 						out.println("</form>");
@@ -117,7 +117,14 @@
 
 			</div>
 
-
+				<%
+				
+                if(lista.isEmpty()){
+                	out.println("<div style=\"margin-top:5%; text-align: center;\">");
+                	out.println("<h3 style=\"color: #ffffff; text-align: center;\"> Voce nao possui quadros ainda. </h3>");
+                	out.println("</div>");
+                }
+   				%>
 
 		</div>
 

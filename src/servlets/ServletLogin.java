@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controll.Admin;
 import controll.Quadros;
 import controll.Usuario;
 
@@ -33,7 +34,18 @@ public class ServletLogin extends HttpServlet {
 			
 			response.sendRedirect("login.html");
 
-		} else {
+		} else if(email.equals("admin@admin.com") && senha.equals("123")){
+			Usuario u = new Usuario();
+			Usuario aux = u.logar(email, senha);
+			Admin a = new Admin();
+			
+			HttpSession session  = request.getSession(true);     
+			session.setAttribute ("idUsuarioLogado", aux.getId());
+			request.setAttribute("nomeu", aux.getNome());
+			request.setAttribute("listaDeQuadros", a.listarQuadros());
+			request.getRequestDispatcher("menuQuadros.jsp").forward(request, response);
+			
+		}else {
 			Usuario u = new Usuario();
 			Usuario aux = u.logar(email, senha);
 			if(aux != null) {

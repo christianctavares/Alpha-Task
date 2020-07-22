@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controll.Admin;
 import controll.Quadros;
 import controll.Usuario;
 
@@ -32,6 +33,15 @@ public class ServletDirecionarGerenciadorQuadro extends HttpServlet {
 		Usuario aux = u.localizarUsuario(idLogado);
 		request.setAttribute("nomeu", aux.getNome());
 
+		if(aux.email.equals("admin@admin.com")) {
+			Admin a = new Admin();
+			request.setAttribute("listaQuadros", a.listarQuadros());
+			request.setAttribute("nomeu", aux.getNome());
+			request.setAttribute("idu", idLogado);
+			
+			request.getRequestDispatcher("menuGerenciaDeQuadros.jsp").forward(request, response);
+
+		}
 
 		request.setAttribute("listaQuadros", aux.getListaQuadros());
 		

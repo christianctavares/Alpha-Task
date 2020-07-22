@@ -47,14 +47,49 @@ public class MQuadro {
 		
 		Usuario u = uAux.localizarUsuario(idUsuarioLogado);
 		
-		Quadros qAux = new Quadros();
-		Quadros q = qAux.localizarQuadro(String.valueOf(qEscolhido.getId()));
-		
 		for (Quadros quadro : u.getListaQuadros()) {
 			if(quadro.id == qEscolhido.id) {
 				u.getListaQuadros().remove(quadro);
+				session.remove(quadro);
 				session.update(u);
-				session.update(q);
+				
+				session.getTransaction().commit();
+				session.close();
+				
+				return true;
+			}
+		}	
+
+			
+		return false;
+		
+	}
+	
+	public boolean excluirQuadroTESTE(Quadros qEscolhido, String idUsuarioLogado) {
+		Session session = HibernateUtil.abrirSession();
+		session.beginTransaction();
+		
+		session.delete(qEscolhido);
+		session.getTransaction().commit();
+		session.close();
+			
+		return true;	
+	}
+	
+	public boolean editarQuadro(Quadros qEscolhido, String idUsuarioLogado) {
+		Session session = HibernateUtil.abrirSession();
+		session.beginTransaction();
+		
+		Usuario uAux = new Usuario();
+		
+		Usuario u = uAux.localizarUsuario(idUsuarioLogado);
+		
+		for (Quadros quadro : u.getListaQuadros()) {
+			if(quadro.id == qEscolhido.id) {
+				quadro.setNome(qEscolhido.getNome());
+				quadro.setDescricao(qEscolhido.getDescricao());
+				session.update(quadro);
+				
 				session.getTransaction().commit();
 				session.close();
 				

@@ -10,21 +10,17 @@ import javax.servlet.http.HttpSession;
 
 import controll.Quadros;
 
-/**
- * Servlet implementation class ServletDetalharQuadro
- */
-@WebServlet("/ServletDetalharQuadro")
-public class ServletDetalharQuadro extends HttpServlet {
+
+@WebServlet("/ServletDirecionarEdicaoQuadro")
+public class ServletDirecionarEdicaoQuadro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session  = request.getSession();     
    		String idLogado = session.getAttribute("idUsuarioLogado").toString(); 
    		String idQuadro = request.getParameter("idQuadro");
@@ -34,11 +30,11 @@ public class ServletDetalharQuadro extends HttpServlet {
 		Quadros qAux = q.localizarQuadro(idQuadro);
 
 
-		request.setAttribute("nomeQuadrou", qAux.getNome());
-		request.setAttribute("descricaoQuadrou", qAux.getDescricao());
+		request.setAttribute("nomeQuadrom", qAux.getNome());
+	    request.setAttribute("descricaoQuadrom", qAux.getDescricao());
 		  
 		 
-   		request.getRequestDispatcher("detalharQuadro.jsp").forward(request, response);
+   		request.getRequestDispatcher("editarQuadro.jsp").forward(request, response);
 	}
 
 }

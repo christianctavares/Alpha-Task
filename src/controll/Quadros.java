@@ -23,6 +23,7 @@ import javax.persistence.ForeignKey;
 
 import model.MQuadro;
 
+
 @DynamicUpdate(value = true)      // informada update dinamico. so exita o que foi alterado
 @SelectBeforeUpdate(value = true)  // verifica antes de atualizar, 
 @DynamicInsert(value = true)
@@ -36,6 +37,7 @@ public class Quadros {
 	@Column
 	private String nome;
 	private String descricao;
+	private String criador;
 	
 	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
 	@JoinColumn(name = "id_quadro", nullable = true, foreignKey = @ForeignKey(name = "fk_Quadro_Tarefa"))
@@ -48,6 +50,12 @@ public class Quadros {
 	public String msg;
 
 	public Quadros() {
+	}
+	
+	public Quadros( String nome, String descricao, String criador) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.criador = criador;
 	}
 
 	public Quadros( String nome, String descricao) {
@@ -85,6 +93,14 @@ public class Quadros {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+	
+	public String getCriador() {
+		return criador;
+	}
+
+	public void setCriador(String criador) {
+		this.criador = criador;
 	}
 
 	public List<Usuario> getListaUsuarios() {
@@ -147,6 +163,18 @@ public class Quadros {
 			return quadroAux;
 		} else {
 			return null;
+		}
+	}
+	
+	public boolean editarQuadro(Quadros qEscolhido, String idQuadroAcessado) {
+		MQuadro q = new MQuadro();
+
+		
+		boolean quadroAux = q.editarQuadro(qEscolhido, idQuadroAcessado);
+		if(quadroAux) {
+			return true;
+		}else {
+			return false;
 		}
 	}
 

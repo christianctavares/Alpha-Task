@@ -43,7 +43,7 @@ public class ServletCadastroQuadro extends HttpServlet {
 			Usuario u = new Usuario();
 			Usuario aux = u.localizarUsuario(idLogado); 
 			
-			Quadros q = new Quadros(nome, descricao);			 
+			Quadros q = new Quadros(nome, descricao, aux.getNome());			 
 			q.cadastrarQuadro(idLogado);
 			
 			aux = u.localizarUsuario(idLogado); 

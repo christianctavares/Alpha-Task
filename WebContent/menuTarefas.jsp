@@ -109,6 +109,14 @@
               </div>
 
             </div>
+           <%
+                
+                if(lista.isEmpty()){
+                	out.println("<div style=\"margin-top:5%; text-align: center;\">");
+                	out.println("<h3 style=\"color: #ffffff; text-align: center;\"> Voce nao possui tarefas ainda. </h3>");
+                	out.println("</div>");
+                }
+   			%>
     
         </main>
         

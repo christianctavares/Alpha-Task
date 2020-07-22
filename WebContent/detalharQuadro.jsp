@@ -78,6 +78,7 @@
             </div>
           </div>
           <div class="form-row">
+
             <div class="form-group col-md-12">
               <label style="color: #FFFFFF; text-align: center;" >Descricao do Quadro</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled> <%= request.getAttribute("descricaoQuadrou") %></textarea>
@@ -87,8 +88,7 @@
           </div>
           <div style="text-align: center;">
           	  <p style="color: #FFFFFF; opacity: 100%; text-align: center;"><%= request.getAttribute("msg") %></p>
-              <input style="margin-left: auto; margin-right: auto; width: 50%; margin-top: 2%;  background-color: #e45c34; color: #FFFFFF; border: none;" class="btn btn-lg btn-primary btn-block" type="submit" value="Excluir Quadro" id="iCadastrar" formaction="ServletExcluirQuadro" formmethod="post" />
-              <input style="margin-left: auto; margin-right: auto; width: 50%; margin-top: 2%;  background-color: #e45c34; color: #FFFFFF; border: none;" class="btn btn-sm" type="submit" value="Voltar" id="iCadastrar" formaction="ServletDirecionarGerenciadorQuadro" formmethod="post" />
+              <input style="margin-left: auto; margin-right: auto; width: 50%; margin-top: 2%;  background-color: #e45c34; color: #FFFFFF; border: none;" class="btn btn-lg" type="submit" value="Voltar" id="iCadastrar" formaction="ServletDirecionarGerenciadorQuadro" formmethod="post" />
           </div>
         </form>
 
