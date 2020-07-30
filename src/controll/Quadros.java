@@ -52,10 +52,10 @@ public class Quadros {
 	public Quadros() {
 	}
 	
-	public Quadros( String nome, String descricao, String criador) {
+	public Quadros( String nome, String descricao, String idCriador) {
 		this.nome = nome;
 		this.descricao = descricao;
-		this.criador = criador;
+		this.criador = idCriador;
 	}
 
 	public Quadros( String nome, String descricao) {
@@ -176,6 +176,15 @@ public class Quadros {
 		}else {
 			return false;
 		}
+	}
+	
+	public List<Usuario> listarMembros(String idQuadro, String idLogado) {
+		MQuadro q = new MQuadro();
+		List<Usuario> qAux = q.listarMembros(idQuadro);
+		if(qAux != null) {
+			return qAux;
+		}
+		return null;
 	}
 
 }

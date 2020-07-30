@@ -1,3 +1,6 @@
+<%@page import="controll.Usuario"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -72,11 +75,28 @@
         <h1 style="color: #FFFFFF; text-align: center; padding-bottom: 3%;" >Nova Tarefa</h1>
         <form>
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
               <label style="color: #FFFFFF; text-align: center;" >Nome da Tarefa</label>
-              <input type="text" class="form-control" name="nomem" id="inputNome" placeholder="Nome da Tarefa">
+              <input type="text" class="form-control" name="nomem" id="inputNome" onchange="validateName()" placeholder="Nome da Tarefa">
+               <label id="erroNome"></label>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
+              <label for="inputStatus" style="color: #FFFFFF; text-align: center;" >Responsavel</label>
+              <select id="inputResponsavel" class="form-control" name="responsavelm">
+              <%
+              List<Usuario> lista = (List<Usuario>) request.getAttribute("listaDeMembros");
+              if(!lista.isEmpty()){
+    			 for (Usuario usuario : lista) {
+
+					out.println("<option>"+ usuario.getNome() +"</option>");
+					
+ 					}
+              }
+				%>
+                
+              </select>
+            </div>
+            <div class="form-group col-md-4">
               <label for="inputStatus" style="color: #FFFFFF; text-align: center;" >Status</label>
               <select id="inputStatus" class="form-control" name="statusm">
                 <option selected>Escolha...</option>
@@ -99,13 +119,15 @@
             </div>
             <div class="form-group col-md-6">
               <label style="color: #FFFFFF; text-align: center;" >Estimativa (dias)</label>
-              <input type="number" class="form-control" name="estimativam" id="inputNome" placeholder="Estimativa de conclusao">
+              <input type="number" class="form-control" name="estimativam" id="inputEstimativa" onchange="validateEstimativa()" placeholder="Estimativa de conclusao">
+              <label id="erroEstimativa"></label>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
               <label style="color: #FFFFFF; text-align: center;" >Descricao Detalhada</label>
-              <textarea class="form-control" name="descricaom" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" name="descricaom" id="exampleFormControlTextarea1" onchange="validateMensagem()" rows="3"></textarea>
+              <label id="erroDescricao"></label>
             </div>
           </div>
           <div>
@@ -116,6 +138,64 @@
     </div>
 
     </div>
+    
+    <script>
+
+    function validateName() {
+        var name = document.getElementById("inputNome").value;
+        if (name == "" || name == null || name.length == 0) {
+          document.getElementById("erroNome").innerHTML =
+            "Nome não pode estar em branco";
+          document.getElementById("erroNome").style.color = "red";
+          return false;
+        }else if(name.includes("1") ||name.includes("2") ||name.includes("3") ||
+        		name.includes("4") ||name.includes("5") ||name.includes("6") ||
+        		name.includes("7") ||name.includes("8") ||name.includes("9") ||
+        		name.includes("0")){
+       	 document.getElementById("erroNome").innerHTML =
+            "Nome não pode conter numero";
+       	document.getElementById("erroNome").style.color = "red";
+		  return false;
+        }else if(name.length < 3){
+         document.getElementById("erroNome").innerHTML =
+                "Nome invalido";  
+         document.getElementById("erroNome").style.color = "red";
+        }else{
+            document.getElementById("erroNome").innerHTML =
+                ""; 
+            return true
+         }
+      }
+
+      function validateEstimativa(){
+        var subject = document.getElementById("inputEstimativa").value;
+        if (subject == "") {
+          document.getElementById("erroEstimativa").innerHTML =
+            "Assunto não pode estar em branco";
+            document.getElementById("erroEstimativa").style.color = "red";  
+          return false;
+        }else{
+          document.getElementById("erroEstimativa").innerHTML =
+                ""; 
+            return true
+        }
+      }
+
+      function validateMensagem(){
+        var subject = document.getElementById("exampleFormControlTextarea1").value;
+        if (subject == "") {
+          document.getElementById("erroDescricao").innerHTML =
+            "Descricao não pode estar em branco";
+            document.getElementById("erroDescricao").style.color = "red";  
+          return false;
+        }else{
+          document.getElementById("erroDescricao").innerHTML =
+                ""; 
+            return true
+        }
+      }
+    
+    </script>
     
     <footer class="page-footer fixed-bottom font-small darken-3">
       <nav class="navbar navbar-light" id="footerMaior">

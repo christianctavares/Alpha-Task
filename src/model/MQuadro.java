@@ -117,4 +117,39 @@ public class MQuadro {
 		return null;
 	}
 
+	public boolean cadastrarMembro(String idLogado, String emailMembro) {
+		Session session = HibernateUtil.abrirSession();
+		session.beginTransaction();
+	
+		Usuario uAux = new Usuario();
+
+		session.getTransaction().commit();
+		session.close();
+		
+		return true;
+	}
+	
+	public List<Usuario> listarMembros(String id) {
+
+		Session session = HibernateUtil.abrirSession();
+
+		session.beginTransaction();
+
+		Quadros q = new Quadros();
+		q.id = Integer.parseInt(id);
+		Quadros qAux = session.find(Quadros.class, q.id);
+
+		q = session.find(Quadros.class, q.id);
+
+		List<Usuario> lista = qAux.getListaUsuarios();
+		session.getTransaction().commit();
+		session.close();
+		if (q != null) {
+
+			return lista;
+		}
+
+		return null;
+	}
+
 }

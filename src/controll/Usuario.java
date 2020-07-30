@@ -53,6 +53,7 @@ public class Usuario {
 	@Transient
 	public String msg;
 
+
 	public Usuario() {
 	}
 
